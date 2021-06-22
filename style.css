@@ -1,0 +1,73 @@
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+
+
+body {
+  font-family: sans-serif;
+  height: 100vh;
+  background: #000;
+
+  display: grid;
+  place-items: center;
+}
+
+.pulse-btn {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: #f00;
+  position: relative;
+}
+
+.pulse-btn::before,
+.pulse-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  border-radius: 50%;
+}
+
+.pulse-btn::before {
+  content: "\f04b";
+  font-family: "Font Awesome 5 Free";
+  color: #fff;
+  font-weight: 900;
+  font-size: 40px;
+  /* background: #f00; */
+  display: grid;
+  place-items: center;
+  z-index: 10;
+  transition: opacity 75ms linear,
+             background-color 100ms linear;
+}
+
+.pulse-btn:hover::before {
+  background: #cc0202;
+}
+
+.pulse-btn:hover::after {
+  background: #f00;
+  z-index: 1;
+  animation: pulse 1250ms infinite;
+} 
+
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.75;
+  }
+  100% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+}
